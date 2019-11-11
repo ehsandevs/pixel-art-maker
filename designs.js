@@ -3,7 +3,9 @@ const pixelTable = document.querySelector('#pixelCanvas');
 const inputWidth = document.querySelector('#inputWidth');
 const inputHeight = document.querySelector('#inputHeight');
 const submitBtn = document.querySelector('#inputSubmit');
-
+const colorBtn = document.querySelector('#colorPicker');
+let color;
+color = colorBtn.value;
 
 // Select color input
 // Select size input
@@ -31,4 +33,15 @@ submitBtn.addEventListener('click', function(e) {
     let r = inputWidth.value;
     let c = inputHeight.value;
     makeGrid(r, c);
+});
+
+colorBtn.addEventListener('change', function() {
+    color = colorBtn.value;
+});
+
+pixelTable.addEventListener('click', function(event) {
+    if (event.target.nodeName === 'TD') {
+
+        event.target.style.backgroundColor = color;
+    }
 });
